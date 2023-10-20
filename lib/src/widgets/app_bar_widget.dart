@@ -11,9 +11,8 @@ class CustomAppBarWidget extends StatelessWidget {
   final bool? centerTitle;
   final Color? backgroundColor;
   final bool ? automaticallyImplyLeading;
-  final bool? automaticallyImplyMiddle ;
   final Widget? action;
-  const CustomAppBarWidget({super.key, this.title, this.automaticallyImplyLeading, this.automaticallyImplyMiddle, this.centerTitle, this.titleStyle, this.action, this.backgroundColor, this.elevation});
+  const CustomAppBarWidget({super.key, this.title, this.automaticallyImplyLeading,  this.centerTitle, this.titleStyle, this.action, this.backgroundColor, this.elevation});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class CustomAppBarWidget extends StatelessWidget {
       middle:Text(title ?? "") , 
       backgroundColor:backgroundColor ?? AppColors.kappBarBgColor,
       automaticallyImplyLeading: automaticallyImplyLeading ?? true,
-      automaticallyImplyMiddle: automaticallyImplyMiddle ?? true,
+      automaticallyImplyMiddle: centerTitle ?? false,
       trailing: action ,
 
     );

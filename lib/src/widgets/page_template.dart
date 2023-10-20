@@ -14,6 +14,10 @@ class PageTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const  CustomScaffoldWidget(
+      appBar: CustomAppBarWidget(
+        title: "Home",
+        centerTitle: true,
+      ) ,
       body: Center(
         child: Text('Page'),
       ),
