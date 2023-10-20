@@ -4,35 +4,67 @@ import 'package:flutter/cupertino.dart';
 
 import '../../export_all.dart';
 
-class CustomAppBarWidget extends StatelessWidget {
-  final String? title;
-  final TextStyle? titleStyle;
-  final double? elevation;
-  final bool? centerTitle;
-  final Color? backgroundColor;
-  final bool ? automaticallyImplyLeading;
-  final bool? automaticallyImplyMiddle ;
-  final Widget? action;
-  const CustomAppBarWidget({super.key, this.title, this.automaticallyImplyLeading, this.automaticallyImplyMiddle, this.centerTitle, this.titleStyle, this.action, this.backgroundColor, this.elevation});
+class CustomAppBar{
+  static Widget buildCupertinoNavigationBar({
+  String? title,
+  Color? backgroundColor,
+  bool? automaticallyImplyLeading,
+  bool? centerTitle,
+  Widget? action,
+}) {
+  return CupertinoNavigationBar(
+    middle: Text(title ?? ""),
+    backgroundColor: backgroundColor ?? AppColors.kappBarBgColor, // Change to your desired color
+    automaticallyImplyLeading: automaticallyImplyLeading ?? true,
+    automaticallyImplyMiddle: centerTitle ?? true,
+    trailing: action,
+  );
+}
+static Widget buildAppBar({
+  String? title,
+  TextStyle? titleStyle,
+  Color? backgroundColor,
+  double? elevation,
+  bool? automaticallyImplyLeading,
+  bool? centerTitle,
+  List<Widget>? action, 
+}) {
+  return AppBar(
+    backgroundColor: backgroundColor ?? AppColors.kappBarBgColor, // Change to your desired color
+    elevation: elevation,
+    automaticallyImplyLeading: automaticallyImplyLeading ?? true,
+    centerTitle: centerTitle ?? false,
+    title: Text(title ?? ""),
+    titleTextStyle: titleStyle ?? const TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Adjust to your style
+    actions: action,
+  );
+}
 
-  @override
-  Widget build(BuildContext context) {
-    return Platform.isAndroid ? AppBar(
-      backgroundColor: backgroundColor ?? AppColors.kappBarBgColor,
-      elevation: elevation,
-      automaticallyImplyLeading: automaticallyImplyLeading ?? true,
-      centerTitle: centerTitle ?? false,
-      title: Text(title ?? "") ,
-      titleTextStyle: titleStyle ?? AppStyle.titleStyle,
-      actions:  [action ?? const SizedBox.shrink()],
-
-    ) :  CupertinoNavigationBar(
-      middle:Text(title ?? "") , 
-      backgroundColor:backgroundColor ?? AppColors.kappBarBgColor,
-      automaticallyImplyLeading: automaticallyImplyLeading ?? true,
-      automaticallyImplyMiddle: automaticallyImplyMiddle ?? true,
-      trailing: action ,
-
-    );
-  }
+static appBar(
+  String? title,
+  TextStyle? titleStyle,
+  Color? backgroundColor,
+  double? elevation,
+  bool? automaticallyImplyLeading,
+  bool? centerTitle,
+  Widget? action,){
+  Platform.isIOS
+    ? CustomAppBar.buildCupertinoNavigationBar(
+        title: title,
+        backgroundColor: backgroundColor ?? Colors.red,
+        automaticallyImplyLeading: automaticallyImplyLeading ?? true,
+        centerTitle : centerTitle ?? false,
+        action: action 
+      )
+    : CustomAppBar.buildAppBar(
+        backgroundColor: backgroundColor ?? AppColors.kappBarBgColor, // Change to your desired color
+    elevation: elevation,
+    automaticallyImplyLeading: automaticallyImplyLeading ?? true,
+    centerTitle: centerTitle ?? false,
+    title: title ,
+    titleStyle: titleStyle ?? const TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Adjust to your style
+    action: [action ?? const SizedBox.shrink()]
+        
+      );
+}
 }

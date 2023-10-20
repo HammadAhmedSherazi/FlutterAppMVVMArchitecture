@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:mvvm_project/export_all.dart';
-import 'package:mvvm_project/src/utils/style.dart';
+
 
 class PageTemplate extends StatelessWidget {
   final String title;
@@ -13,10 +13,11 @@ class PageTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const  CustomScaffoldWidget(
-      body: Center(
-        child: Text('Page'),
-      ),
+    return   CustomScaffoldWidget(
+      
+      
+      appBar: CustomAppBar.appBar(title, null,Colors.red, null, null, null, null)
+      // body: widget,/
     );
   }
 }
