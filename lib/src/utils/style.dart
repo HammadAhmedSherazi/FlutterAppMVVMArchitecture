@@ -38,4 +38,14 @@ class AppStyle{
             fontSize: 14.sp,
             fontWeight: FontWeight.w600,
             fontFamily: 'Poppins');
+
+  
+  //SCREEN PADDING
+  static final double horizontalPadding = 0.r;
+  static final double verticalPadding = 0.r;
+
+
+  //SCREEN DECORATION
+  static const BoxDecoration pageDocoration =  BoxDecoration();
+
 }

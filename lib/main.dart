@@ -1,3 +1,8 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+import 'package:mvvm_project/src/view/tode_list.dart';
+
 import 'export_all.dart';
 
 
@@ -17,18 +22,19 @@ class MyApp extends StatelessWidget {
 
       // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_ , child) {
-        return MaterialApp(
+        return Platform.isIOS ? CupertinoApp(
+          debugShowCheckedModeBanner: false,
+            
       title: 'Flutter Demo',
       navigatorKey: NavigationService.navigationKey,
-      theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-     
+      
+     home: const TodoList(),
+    ) : const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: TodoList(),
     );
       },
-      
+     
     ) ;
   }
 }

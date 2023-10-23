@@ -30,7 +30,6 @@ export 'src/utils/style.dart';
 export 'src/widgets/text_field_widget.dart';
 export 'src/widgets/button_widget.dart';
 export 'src/widgets/scroll_gesture_remove_widget.dart';
-export 'src/widgets/text_field_widget.dart';
 export 'src/widgets/scaffold_widget.dart';
 export 'src/widgets/app_bar_widget.dart';
 
@@ -52,3 +51,7 @@ export 'src/widgets/app_bar_widget.dart';
 
 //HELPER
 export 'helper/navigator.dart';
+
+
+//DATA
+export 'data/app_excaptions.dart';
