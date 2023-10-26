@@ -5,11 +5,21 @@ import 'package:flutter/material.dart';
 
 class NavigationService{
 
-  static final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
+  static late final GlobalKey<NavigatorState> navigationKey ;
 
-  // static NavigationService instance =  
-  // NavigationService();
+  static NavigationService ? _instance;
+  
+  //PRIVATE CONSTRUCTOR 
+  NavigationService.internal(){
+    navigationKey = GlobalKey<NavigatorState>();
+  }
 
+  static get key 
+  {
+    _instance ??= NavigationService.internal();
+    return _instance;
+
+  }
   // NavigationService(){
   //   navigationKey = GlobalKey<NavigatorState>();
   // }

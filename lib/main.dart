@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
             
       title: 'Flutter Demo',
-      navigatorKey: NavigationService.navigationKey,
+      navigatorKey: NavigationService.key,
       
      home: const TodoList(),
     ) : const MaterialApp(
